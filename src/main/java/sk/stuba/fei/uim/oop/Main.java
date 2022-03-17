@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         List<Zviera> zveri = new ArrayList<>(List.of(new Pes("Dunco"), new Macka("Murko"),
                 new Pes("Luna"), new Macka("Garfield")));
-
+        zveri.addAll(Collections.nCopies(5, new Pes("Fifi")));
         System.out.println(zveri);
         zveri.sort(new ZvieraComparator());
         System.out.println(zveri);
