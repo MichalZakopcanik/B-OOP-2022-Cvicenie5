@@ -35,6 +35,10 @@ public class Main {
                     .map(pes -> (Pes) pes)
                     .collect(Collectors.toList());
             psi.forEach(System.out::println);
+
+        System.out.println("----");
+        List<Macka> macky = Stream.generate(() -> new Macka("Murko")).limit(5).collect(Collectors.toList());
+        System.out.println(macky);
         }
     }
 
