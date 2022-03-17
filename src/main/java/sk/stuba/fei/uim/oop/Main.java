@@ -1,9 +1,7 @@
 package sk.stuba.fei.uim.oop;
 
 
-import sk.stuba.fei.uim.oop.zvierata.Macka;
-import sk.stuba.fei.uim.oop.zvierata.Pes;
-import sk.stuba.fei.uim.oop.zvierata.Zviera;
+import sk.stuba.fei.uim.oop.zvierata.*;
 
 import java.util.ArrayList;
 
@@ -14,15 +12,30 @@ public class Main {
         zveri.add(new Macka("Murko"));
 
         for (var zver : zveri){
-            kontrola(zver);
+            System.out.println("pred ");
+            try {
+                System.out.println("pred try ");
+                kontrola(zver);
+                System.out.println("po try ");
+            } catch (NotPesException e) {
+                System.out.println("catch pes ");
+                System.out.println(e.getMessage());
+            } catch (NotMackaException e) {
+                System.out.println("catch macka ");
+                System.out.println(e.getMessage());
+            }finally {
+                System.out.println("finally ");
+            }
+            System.out.println("po ");
+            System.out.println("-----");
         }
     }
 
-    private static void kontrola(Zviera zver){
+    private static void kontrola(Zviera zver) throws NotPesException, NotMackaException {
         if (zver instanceof Pes){
-            System.out.println("Je to pes");
+            throw new NotMackaException("Nie je to macka");
         } else {
-            throw new IllegalArgumentException("Nie je to pes");
+            throw new NotPesException("Nie je to pes");
         }
     }
 }
